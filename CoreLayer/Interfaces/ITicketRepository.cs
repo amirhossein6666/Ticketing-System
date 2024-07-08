@@ -5,6 +5,8 @@ namespace TicketingCleanArchitecture.CoreLayer.Interfaces;
 
 public interface ITicketRepository
 {
-    Ticket AddTicket(Ticket ticket);
+    Task<Ticket> AddTicket(Ticket ticket);
     Ticket GetTicketById(int Id);
+    Ticket UpdateTicket(Ticket ticket);
+    Ticket RemoveTicket(int Id);
 }
