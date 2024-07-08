@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace TicketingSystem.SupportTeamMember
+namespace TicketingCleanArchitecture.CoreLayer.Entities
 {
     // public enum SupportTeamMemberCategory
     // {
@@ -22,8 +22,8 @@ namespace TicketingSystem.SupportTeamMember
 
         // public SupportTeamMemberCategory Category { get; set; }
 
-        public ICollection<Ticket.Ticket> AvailableTickets { get; set; }
+        public ICollection<Ticket> AvailableTickets { get; set; }
 
-        public ICollection<Answer.Answer> Answers { get; set; }
+        public ICollection<Answer> Answers { get; set; }
     }
 }

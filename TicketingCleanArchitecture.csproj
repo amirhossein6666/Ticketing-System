@@ -24,9 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ApplicationLayer\" />
+      <Folder Include="ApplicationLayer\UseCases\" />
       <Folder Include="CoreLayer\Entities\" />
-      <Folder Include="CoreLayer\Interfaces\" />
       <Folder Include="InfrastructureLayer\Data\" />
       <Folder Include="PresentationLayer\" />
     </ItemGroup>

@@ -2,8 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using TicketingSystem;
-using TicketingSystem.SupportTeamMember;
+using TicketingCleanArchitecture.InfrastructureLayer.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();

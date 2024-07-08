@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace TicketingSystem.Customer
+namespace TicketingCleanArchitecture.CoreLayer.Entities
 {
     [Index(nameof(UserName), IsUnique = true)]
     public class Customer
@@ -13,6 +13,6 @@ namespace TicketingSystem.Customer
 
         public string Name { get; set; }
 
-        public ICollection<Ticket.Ticket> Tickets { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
     }
 }

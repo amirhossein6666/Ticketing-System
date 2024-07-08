@@ -1,4 +1,4 @@
-namespace TicketingSystem.Answer;
+namespace TicketingCleanArchitecture.CoreLayer.Entities;
 
 public class Answer
 {
@@ -11,8 +11,8 @@ public class Answer
     public DateTime SendDate { get; set; }
 
     public int TicketId { get; set; }
-    public Ticket.Ticket Ticket { get; set; }
+    public Ticket Ticket { get; set; }
 
     public int SupportTeamMemberID { get; set; }
-    public SupportTeamMember.SupportTeamMember SupportTeamMember { get; set; }
+    public SupportTeamMember SupportTeamMember { get; set; }
 }

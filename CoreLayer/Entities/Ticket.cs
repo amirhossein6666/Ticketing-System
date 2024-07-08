@@ -1,4 +1,4 @@
-namespace TicketingSystem.Ticket;
+namespace TicketingCleanArchitecture.CoreLayer.Entities;
 
 public enum Status
 {
@@ -38,10 +38,10 @@ public class Ticket
 
     public Rating Rating { get; set; }
 
-    public ICollection<Answer.Answer> Answers { get; set; }
+    public ICollection<Answer> Answers { get; set; }
 
     public int CustomerId { get; set; }
-    public Customer.Customer Customer { get; set; }
+    public Customer Customer { get; set; }
 
     // public SupportTeamMemberCategory Category { get; set; }
 

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
+using TicketingCleanArchitecture.CoreLayer.Entities;
 
-namespace TicketingSystem
+namespace TicketingCleanArchitecture.InfrastructureLayer.Data
 {
 
 
@@ -18,9 +18,9 @@ namespace TicketingSystem
             optionsBuilder.UseSqlServer(_config.GetConnectionString("DatabaseConnection"));
         }
 
-        public DbSet<Ticket.Ticket> Tickets { get; set; }
-        public DbSet<Customer.Customer> Customers { get; set; }
-        public DbSet<SupportTeamMember.SupportTeamMember> SupportTeamMembers { get; set; }
-        public DbSet<Answer.Answer> Answers { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<SupportTeamMember> SupportTeamMembers { get; set; }
+        public DbSet<Answer> Answers { get; set; }
     }
 }
