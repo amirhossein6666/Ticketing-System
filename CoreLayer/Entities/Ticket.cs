@@ -2,20 +2,19 @@ namespace TicketingCleanArchitecture.CoreLayer.Entities;
 
 public enum Status
 {
-    Unread,
-    Pending,
-    Closed,
-    Cancelled
-
+    Unread = 1,
+    Pending = 2,
+    Closed = 3,
+    Cancelled = 4
 }
 
 public enum Rating
 {
-    OneSta=1,
-    TwoStar,
-    ThreeStar,
-    FourStar,
-    FiveStar
+    OneStar = 1,
+    TwoStar = 2,
+    ThreeStar = 3,
+    FourStar = 4,
+    FiveStar = 5
 }
 
 // public enum SupportTeamMemberCategory
@@ -38,7 +37,7 @@ public class Ticket
 
     public Rating Rating { get; set; }
 
-    public ICollection<Answer> Answers { get; set; }
+    public ICollection<Answer> Answers { get; set; } = new List<Answer>();
 
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }
