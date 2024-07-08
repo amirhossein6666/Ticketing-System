@@ -15,14 +15,14 @@ public class TicketRepository : ITicketRepository
 
     public async Task<Ticket> AddTicket(Ticket ticket)
     {
-        _appDbContext.Add(ticket);
+        _appDbContext.Tickets.Add(ticket);
         await _appDbContext.SaveChangesAsync();
         return ticket;
     }
 
-    public Ticket GetTicketById(int Id)
+    public async Task<Ticket> GetTicketById(int Id)
     {
-        
+        return await _appDbContext.Tickets.FindAsync(Id);
     }
 
     public Ticket UpdateTicket(Ticket ticket)
