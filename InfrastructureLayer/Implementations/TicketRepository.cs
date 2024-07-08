@@ -25,9 +25,11 @@ public class TicketRepository : ITicketRepository
         return await _appDbContext.Tickets.FindAsync(Id);
     }
 
-    public Ticket UpdateTicket(Ticket ticket)
+    public async Task<Ticket> UpdateTicket(Ticket updatedTicket)
     {
-
+        _appDbContext.Tickets.Update(updatedTicket);
+        await _appDbContext.SaveChangesAsync();
+        return updatedTicket;
     }
 
     public Ticket RemoveTicket(int Id)
