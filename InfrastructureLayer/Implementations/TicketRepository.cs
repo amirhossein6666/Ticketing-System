@@ -22,7 +22,7 @@ public class TicketRepository : ITicketRepository
 
     public Ticket GetTicketById(int Id)
     {
-
+        
     }
 
     public Ticket UpdateTicket(Ticket ticket)
@@ -31,6 +31,11 @@ public class TicketRepository : ITicketRepository
     }
 
     public Ticket RemoveTicket(int Id)
+    {
+
+    }
+
+    public IEnumerable<Ticket> FindAllTickets()
     {
 
     }

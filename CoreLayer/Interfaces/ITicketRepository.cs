@@ -9,4 +9,5 @@ public interface ITicketRepository
     Ticket GetTicketById(int Id);
     Ticket UpdateTicket(Ticket ticket);
     Ticket RemoveTicket(int Id);
+    IEnumerable<Ticket> FindAllTickets();
 }
