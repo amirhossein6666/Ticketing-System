@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TicketingCleanArchitecture.CoreLayer.Entities;
 using TicketingCleanArchitecture.CoreLayer.Interfaces;
 using TicketingCleanArchitecture.InfrastructureLayer.Data;
@@ -32,13 +33,16 @@ public class TicketRepository : ITicketRepository
         return updatedTicket;
     }
 
-    public Ticket RemoveTicket(int Id)
+    public async Task<Ticket> RemoveTicket(int Id)
     {
-
+        Ticket ticket = await _appDbContext.Tickets.FindAsync(Id);
+        _appDbContext.Tickets.Remove(ticket);
+        await _appDbContext.SaveChangesAsync();
+        return ticket;
     }
 
-    public IEnumerable<Ticket> FindAllTickets()
+    public async Task<IEnumerable<Ticket>> FindAllTickets()
     {
-
+        return await _appDbContext.Tickets.ToListAsync();
     }
 }
