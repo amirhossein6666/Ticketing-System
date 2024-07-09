@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TicketingCleanArchitecture.ApplicationLayer.UseCases.TicketUseCases;
 using TicketingCleanArchitecture.CoreLayer.Dtos;
-using TicketingCleanArchitecture.CoreLayer.Entities;
 
 namespace TicketingCleanArchitecture.PresentationLayer.Controllers;
 [ApiController]
@@ -18,13 +17,14 @@ public class TicketController: ControllerBase
     }
 
     [HttpPost]
-    public async Task<Ticket> AddTicket(CreateTicketDto ticketDto)
+    public async Task<IActionResult> AddTicket(CreateTicketDto ticketDto)
     {
-        return await _addTicketUseCase.Execute(ticketDto);
+        var ticket = await _addTicketUseCase.Execute(ticketDto);
+        return Ok(ticket);
     }
     [HttpGet("id")]
-    public async Task<Ticket> GetTicketById(int id)
+    public async Task<IActionResult> GetTicketById(int id)
     {
-        return await _getTicketByIdUseCase.Execute(id);
+        return Ok(await _getTicketByIdUseCase.Execute(id));
     }
 }
