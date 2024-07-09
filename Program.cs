@@ -1,14 +1,15 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using TicketingCleanArchitecture.ApplicationLayer.UseCases.CustomerUseCase;
 using TicketingCleanArchitecture.ApplicationLayer.UseCases.TicketUseCases;
 using TicketingCleanArchitecture.CoreLayer.Interfaces;
 using TicketingCleanArchitecture.InfrastructureLayer.Data;
 using TicketingCleanArchitecture.InfrastructureLayer.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 var jwtIssuer = builder.Configuration.GetSection("Jwt:Issuer").Get<string>();
@@ -31,9 +32,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthorization();
+
 builder.Services.AddTransient<AddTicketUseCase>();
 builder.Services.AddTransient<GetTicketByIdUseCase>();
+
+builder.Services.AddTransient<CustomerSIgnUpUseCase>();
+
 builder.Services.AddTransient<ITicketRepository, TicketRepository>();
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));

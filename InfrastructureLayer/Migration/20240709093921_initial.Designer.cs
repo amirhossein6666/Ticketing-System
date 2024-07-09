@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketingCleanArchitecture.InfrastructureLayer.Data;
 
 #nullable disable
 
-namespace TicketingCleanArchitecture.InfrastructureLayer
+namespace TicketingCleanArchitecture.InfrastructureLayer.Migration
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240709093921_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,9 +139,6 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupportTeamMemberId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -146,8 +146,6 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("SupportTeamMemberId");
 
                     b.ToTable("Tickets");
                 });
@@ -179,10 +177,6 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketingCleanArchitecture.CoreLayer.Entities.SupportTeamMember", null)
-                        .WithMany("AvailableTickets")
-                        .HasForeignKey("SupportTeamMemberId");
-
                     b.Navigation("Customer");
                 });
 
@@ -194,8 +188,6 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
             modelBuilder.Entity("TicketingCleanArchitecture.CoreLayer.Entities.SupportTeamMember", b =>
                 {
                     b.Navigation("Answers");
-
-                    b.Navigation("AvailableTickets");
                 });
 
             modelBuilder.Entity("TicketingCleanArchitecture.CoreLayer.Entities.Ticket", b =>

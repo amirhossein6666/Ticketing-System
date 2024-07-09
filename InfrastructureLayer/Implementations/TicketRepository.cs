@@ -17,7 +17,6 @@ public class TicketRepository : ITicketRepository
 
     public async Task<Ticket> AddTicket(CreateTicketDto ticketDto)
     {
-
         var customer = await _appDbContext.Customers.FindAsync(ticketDto.CustomerId);
         if (customer == null)
         {
@@ -34,7 +33,6 @@ public class TicketRepository : ITicketRepository
             CustomerId = ticketDto.CustomerId,
             Customer = customer
         };
-
         _appDbContext.Tickets.Add(ticket);
         await _appDbContext.SaveChangesAsync();
         return ticket;
@@ -42,7 +40,7 @@ public class TicketRepository : ITicketRepository
 
     public async Task<Ticket> GetTicketById(int Id)
     {
-        return await _appDbContext.Tickets.FindAsync(Id);
+         return await _appDbContext.Tickets.Include(t => t.Customer).FirstOrDefaultAsync();
     }
 
     public async Task<Ticket> UpdateTicket(Ticket updatedTicket)

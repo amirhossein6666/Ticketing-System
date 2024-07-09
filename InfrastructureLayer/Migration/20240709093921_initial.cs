@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TicketingCleanArchitecture.InfrastructureLayer
+namespace TicketingCleanArchitecture.InfrastructureLayer.Migration
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class initial : Microsoft.EntityFrameworkCore.Migrations.Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,8 +52,7 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
                     SendDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
-                    SupportTeamMemberId = table.Column<int>(type: "int", nullable: true)
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,11 +63,6 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Tickets_SupportTeamMembers_SupportTeamMemberId",
-                        column: x => x.SupportTeamMemberId,
-                        principalTable: "SupportTeamMembers",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -126,11 +120,6 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
                 name: "IX_Tickets_CustomerId",
                 table: "Tickets",
                 column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tickets_SupportTeamMemberId",
-                table: "Tickets",
-                column: "SupportTeamMemberId");
         }
 
         /// <inheritdoc />
@@ -140,13 +129,13 @@ namespace TicketingCleanArchitecture.InfrastructureLayer
                 name: "Answers");
 
             migrationBuilder.DropTable(
+                name: "SupportTeamMembers");
+
+            migrationBuilder.DropTable(
                 name: "Tickets");
 
             migrationBuilder.DropTable(
                 name: "Customers");
-
-            migrationBuilder.DropTable(
-                name: "SupportTeamMembers");
         }
     }
 }

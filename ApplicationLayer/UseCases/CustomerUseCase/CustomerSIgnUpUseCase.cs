@@ -1,0 +1,20 @@
+using TicketingCleanArchitecture.CoreLayer.Dtos;
+using TicketingCleanArchitecture.CoreLayer.Entities;
+using TicketingCleanArchitecture.CoreLayer.Interfaces;
+
+namespace TicketingCleanArchitecture.ApplicationLayer.UseCases.CustomerUseCase;
+
+public class CustomerSIgnUpUseCase
+{
+    private readonly ICustomerRepository _customerRepository;
+
+    public CustomerSIgnUpUseCase(ICustomerRepository customerRepository)
+    {
+        _customerRepository = customerRepository;
+    }
+
+    public async Task<Customer> Execute(CustomerSignupDto customerDto)
+    {
+        return await _customerRepository.CustomerSignUp(customerDto);
+    }
+}
