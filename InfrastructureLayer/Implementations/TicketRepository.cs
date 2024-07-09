@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TicketingCleanArchitecture.CoreLayer.Dtos;
 using TicketingCleanArchitecture.CoreLayer.Entities;
 using TicketingCleanArchitecture.CoreLayer.Interfaces;
 using TicketingCleanArchitecture.InfrastructureLayer.Data;
@@ -14,7 +15,7 @@ public class TicketRepository : ITicketRepository
         _appDbContext = appDbContext;
     }
 
-    public async Task<Ticket> AddTicket(Ticket ticket)
+    public async Task<Ticket> AddTicket(CreateTicketDto ticketDto)
     {
         _appDbContext.Tickets.Add(ticket);
         await _appDbContext.SaveChangesAsync();

@@ -12,8 +12,8 @@ public class GetTicketByIdUseCase
         _ticketRepository = ticketRepository;
     }
 
-    public async Task<Ticket> Execute(int Id)
+    public async Task<Ticket> Execute(int id)
     {
-        return await _ticketRepository.GetTicketById(Id);
+        return await _ticketRepository.GetTicketById(id);
     }
 }

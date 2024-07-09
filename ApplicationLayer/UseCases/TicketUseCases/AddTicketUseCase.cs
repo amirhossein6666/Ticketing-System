@@ -1,3 +1,4 @@
+using TicketingCleanArchitecture.CoreLayer.Dtos;
 using TicketingCleanArchitecture.CoreLayer.Entities;
 using TicketingCleanArchitecture.CoreLayer.Interfaces;
 
@@ -12,8 +13,8 @@ public class AddTicketUseCase
         _ticketRepository = ticketRepository;
     }
 
-    public async Task<Ticket> Execute(Ticket ticket)
+    public async Task<Ticket> Execute(CreateTicketDto ticketDto)
     {
-        return await _ticketRepository.AddTicket(ticket);
+        return await _ticketRepository.AddTicket(ticketDto);
     }
 }
