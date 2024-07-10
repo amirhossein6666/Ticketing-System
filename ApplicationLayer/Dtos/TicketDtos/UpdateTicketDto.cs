@@ -10,5 +10,5 @@ public class UpdateTicketDto
 
     public TicketStatus Status { get; set; }
 
-    public TicketRating Rating { get; set; }
+    public Rating Rating { get; set; }
 }

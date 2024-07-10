@@ -18,7 +18,7 @@ public class Ticket
 
     public TicketStatus Status { get; set; }
 
-    public TicketRating? Rating { get; set; }
+    public Rating? Rating { get; set; }
 
     public ICollection<Answer> Answers { get; set; }
 

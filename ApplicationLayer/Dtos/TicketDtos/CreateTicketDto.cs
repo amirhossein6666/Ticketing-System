@@ -12,7 +12,7 @@ public class CreateTicketDto
 
     public TicketStatus Status { get; set; }
 
-    public TicketRating Rating { get; set; }
+    public Rating Rating { get; set; }
 
     public int CustomerId { get; set; }
 

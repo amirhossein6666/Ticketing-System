@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using TicketingCleanArchitecture.CoreLayer.Enums;
 
 namespace TicketingCleanArchitecture.CoreLayer.Entities
 {
@@ -16,6 +17,8 @@ namespace TicketingCleanArchitecture.CoreLayer.Entities
         public string PassWord { get; set; }
 
         public string Name { get; set; }
+
+        public Rating? Rating { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
     }

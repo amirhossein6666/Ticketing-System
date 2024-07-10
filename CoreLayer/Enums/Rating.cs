@@ -1,6 +1,6 @@
 namespace TicketingCleanArchitecture.CoreLayer.Enums;
 
-public enum TicketRating
+public enum Rating
 {
     OneStar = 1,
     TwoStar = 2,
