@@ -24,7 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="CoreLayer\Entities\" />
       <Folder Include="InfrastructureLayer\Data\" />
     </ItemGroup>
 

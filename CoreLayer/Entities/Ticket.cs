@@ -21,6 +21,7 @@ public class Ticket
     public Rating? Rating { get; set; }
 
     public ICollection<Answer> Answers { get; set; }
+    public ICollection<TicketAnswer> TicketAnswers { get; set; }
 
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }

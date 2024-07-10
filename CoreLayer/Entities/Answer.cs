@@ -15,8 +15,8 @@ public class Answer
 
     public DateTime SendDate { get; set; }
 
-    public int TicketId { get; set; }
-    public Ticket Ticket { get; set; }
+    public ICollection<Ticket> Replies { get; set; }
+    public ICollection<TicketAnswer> TicketAnswers { get; set; }
 
     public int SupportTeamMemberID { get; set; }
     public SupportTeamMember SupportTeamMember { get; set; }

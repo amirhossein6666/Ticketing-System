@@ -18,6 +18,22 @@ namespace TicketingCleanArchitecture.InfrastructureLayer.Data
             optionsBuilder.UseSqlServer(_config.GetConnectionString("DatabaseConnection"));
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TicketAnswer>()
+                .HasKey(ta => new { ta.TicketId, ta.AnswerId });
+
+            modelBuilder.Entity<TicketAnswer>()
+                .HasOne(ta => ta.Ticket)
+                .WithMany(t => t.TicketAnswers)
+                .HasForeignKey(ta => ta.TicketId);
+
+            modelBuilder.Entity<TicketAnswer>()
+                .HasOne(ta => ta.Answer)
+                .WithMany(a => a.TicketAnswers)
+                .HasForeignKey(ta => ta.AnswerId);
+        }
+
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<SupportTeamMember> SupportTeamMembers { get; set; }
