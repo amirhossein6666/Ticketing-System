@@ -35,6 +35,7 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddTransient<AddTicketUseCase>();
 builder.Services.AddTransient<GetTicketByIdUseCase>();
+builder.Services.AddTransient<UpdateTicketUseCase>();
 
 builder.Services.AddTransient<CustomerSIgnUpUseCase>();
 builder.Services.AddTransient<GetCustomerByIdUesCase>();
