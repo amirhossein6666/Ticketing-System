@@ -1,7 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace TicketingCleanArchitecture.CoreLayer.Entities;
 
 public class Answer
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     public string Title { get; set; }
