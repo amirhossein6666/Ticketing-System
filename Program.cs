@@ -37,6 +37,7 @@ builder.Services.AddTransient<AddTicketUseCase>();
 builder.Services.AddTransient<GetTicketByIdUseCase>();
 
 builder.Services.AddTransient<CustomerSIgnUpUseCase>();
+builder.Services.AddTransient<GetCustomerByIdUesCase>();
 
 builder.Services.AddTransient<ITicketRepository, TicketRepository>();
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using TicketingCleanArchitecture.CoreLayer.Dtos;
 using TicketingCleanArchitecture.CoreLayer.Entities;
 using TicketingCleanArchitecture.CoreLayer.Interfaces;
 using TicketingCleanArchitecture.InfrastructureLayer.Data;
@@ -15,32 +14,17 @@ public class TicketRepository : ITicketRepository
         _appDbContext = appDbContext;
     }
 
-    public async Task<Ticket> AddTicket(CreateTicketDto ticketDto)
+    public async Task<Ticket> AddTicket(Ticket ticket)
     {
-        var customer = await _appDbContext.Customers.FindAsync(ticketDto.CustomerId);
-        if (customer == null)
-        {
-            throw new Exception("Customer Not Found");
-        }
-        var ticket = new Ticket()
-        {
-            Title = ticketDto.Title,
-            Message = ticketDto.Message,
-            SendDate = ticketDto.SendDate,
-            Status = ticketDto.Status,
-            Rating = ticketDto.Rating,
-            Answers = new List<Answer>(),
-            CustomerId = ticketDto.CustomerId,
-            Customer = customer
-        };
+
         _appDbContext.Tickets.Add(ticket);
         await _appDbContext.SaveChangesAsync();
         return ticket;
     }
 
-    public async Task<Ticket> GetTicketById(int Id)
+    public async Task<Ticket> GetTicketById(int id)
     {
-         return await _appDbContext.Tickets.Include(t => t.Customer).FirstOrDefaultAsync();
+         return await _appDbContext.Tickets.Include(t => t.Customer).FirstOrDefaultAsync(c => c.Id == id);
     }
 
     public async Task<Ticket> UpdateTicket(Ticket updatedTicket)

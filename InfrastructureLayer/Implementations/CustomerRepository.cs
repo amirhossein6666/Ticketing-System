@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using TicketingCleanArchitecture.CoreLayer.Dtos;
+using Microsoft.EntityFrameworkCore;
 using TicketingCleanArchitecture.CoreLayer.Entities;
 using TicketingCleanArchitecture.CoreLayer.Interfaces;
 using TicketingCleanArchitecture.InfrastructureLayer.Data;
@@ -20,5 +18,10 @@ public class CustomerRepository: ICustomerRepository
         _appDbContext.Customers.Add(customer);
         await _appDbContext.SaveChangesAsync();
         return customer;
+    }
+
+    public async Task<Customer> GetCustomerById(int id)
+    {
+        return await _appDbContext.Customers.Include(c => c.Tickets).FirstOrDefaultAsync(c => c.Id == id);
     }
 }

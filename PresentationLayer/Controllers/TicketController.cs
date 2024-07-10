@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using TicketingCleanArchitecture.ApplicationLayer.Dtos;
 using TicketingCleanArchitecture.ApplicationLayer.UseCases.TicketUseCases;
-using TicketingCleanArchitecture.CoreLayer.Dtos;
 
 namespace TicketingCleanArchitecture.PresentationLayer.Controllers;
 [ApiController]
