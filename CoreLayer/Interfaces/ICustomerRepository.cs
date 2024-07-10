@@ -6,5 +6,5 @@ namespace TicketingCleanArchitecture.CoreLayer.Interfaces;
 
 public interface ICustomerRepository
 {
-     Task<Customer> CustomerSignUp(CustomerSignupDto customerDto);
+     Task<Customer> CustomerSignUp(Customer customer);
 }

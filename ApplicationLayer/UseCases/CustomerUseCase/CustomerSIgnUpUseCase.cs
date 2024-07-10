@@ -15,6 +15,13 @@ public class CustomerSIgnUpUseCase
 
     public async Task<Customer> Execute(CustomerSignupDto customerDto)
     {
-        return await _customerRepository.CustomerSignUp(customerDto);
+        var customer = new Customer()
+        {
+            Name = customerDto.Name,
+            UserName = customerDto.UserName,
+            PassWord = customerDto.PassWord,
+            Tickets = new List<Ticket>(),
+        };
+        return await _customerRepository.CustomerSignUp(customer);
     }
 }

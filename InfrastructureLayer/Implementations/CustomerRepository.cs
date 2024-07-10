@@ -15,15 +15,8 @@ public class CustomerRepository: ICustomerRepository
     {
         _appDbContext = appDbContext;
     }
-    public async Task<Customer> CustomerSignUp(CustomerSignupDto customerDto)
+    public async Task<Customer> CustomerSignUp(Customer customer)
     {
-        var customer = new Customer()
-        {
-            Name = customerDto.Name,
-            UserName = customerDto.UserName,
-            PassWord = customerDto.PassWord,
-            Tickets = new List<Ticket>(),
-        };
         _appDbContext.Customers.Add(customer);
         await _appDbContext.SaveChangesAsync();
         return customer;
