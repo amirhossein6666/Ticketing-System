@@ -1,6 +1,6 @@
 using TicketingCleanArchitecture.CoreLayer.Enums;
 
-namespace TicketingCleanArchitecture.ApplicationLayer.Dtos;
+namespace TicketingCleanArchitecture.ApplicationLayer.Dtos.TicketDtos;
 
 public class CreateTicketDto
 {

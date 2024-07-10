@@ -1,4 +1,4 @@
-namespace TicketingCleanArchitecture.ApplicationLayer.Dtos;
+namespace TicketingCleanArchitecture.ApplicationLayer.Dtos.CustomerDtos;
 
 public class CustomerSignupDto
 {

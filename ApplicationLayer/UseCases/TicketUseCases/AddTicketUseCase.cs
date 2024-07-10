@@ -1,4 +1,4 @@
-using TicketingCleanArchitecture.ApplicationLayer.Dtos;
+using TicketingCleanArchitecture.ApplicationLayer.Dtos.TicketDtos;
 using TicketingCleanArchitecture.CoreLayer.Entities;
 using TicketingCleanArchitecture.CoreLayer.Interfaces;
 

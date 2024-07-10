@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TicketingCleanArchitecture.ApplicationLayer.Dtos;
+using TicketingCleanArchitecture.ApplicationLayer.Dtos.TicketDtos;
 using TicketingCleanArchitecture.ApplicationLayer.UseCases.TicketUseCases;
 
 namespace TicketingCleanArchitecture.PresentationLayer.Controllers;
